@@ -9,7 +9,7 @@ import {
   Length,
   Max,
   Min,
-  IsMongoId
+  IsMongoId,
 } from 'class-validator';
 import { Status } from 'src/common/types/status-types.enum';
 import { User } from 'src/user/user.model';
@@ -18,7 +18,7 @@ import { User } from 'src/user/user.model';
 export class BookRequest {
   @IsString()
   @Prop({ type: String, enum: Status, default: Status.Pending })
-  status: Status
+  status: Status;
 
   @IsMongoId()
   @Prop({ type: Types.ObjectId, ref: User.name, required: true })

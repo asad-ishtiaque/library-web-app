@@ -37,11 +37,7 @@ export class BookController {
   //   @Param('id') id: string,
   //   @Body() updateBookDto: UpdateBookDto,
   // ) {
-  //   try {
   //     return await this.bookService.update(id, updateBookDto);
-  //   } catch (error) {
-  //     throw new HttpException(error.message, HttpStatus.BAD_REQUEST);
-  //   }
   // }
 
   @Delete(':id')

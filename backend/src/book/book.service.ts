@@ -37,6 +37,9 @@ export class BookService {
   //     }
   async delete(id: string) {
     const deletedBook = await this.bookModel.findByIdAndDelete(id);
+    if (!deletedBook){
+      throw new NotFoundException(`Book doesn't exist with ID: ${id}`)
+    }
     return { id: deletedBook.id };
   }
 }
