@@ -1,5 +1,3 @@
-
-
 import { Body, Controller, Get, Post, Res } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { SignUpDto } from './dto/sign-up.dto';
@@ -26,15 +24,9 @@ export class AuthController {
   ) {
     const tokens = await this.authService.signIn(data);
 
-    const expiry = new Date();
-    expiry.setDate(expiry.getDate() + 1);
+    res.setHeader('Authorization', `Bearer ${tokens.accessToken}`);
 
-    res.cookie('tokens', tokens, {
-      httpOnly: true,
-      expires: expiry,
-    });
-
-    return tokens;
+    return { message: 'Signed in successfully', tokens };
   }
 
   @Get('logout')

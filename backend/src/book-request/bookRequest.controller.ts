@@ -31,7 +31,7 @@ export class BookRequestController {
   }
 
   @Roles(Role.User)
-  @Post()
+  @Post("createBookRequest")
   async createBookRequest(@Body() createBookRequestDto: CreateBookRequestDto) {
     return await this.bookRequestService.create(createBookRequestDto);
   }

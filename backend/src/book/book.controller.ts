@@ -24,6 +24,7 @@ export class BookController {
   getAllBooks() {
     return this.bookService.findAll();
   }
+
   @Roles(Role.Admin)
   @Get(':id')
   getBookById(@Param('id') id: string) {
