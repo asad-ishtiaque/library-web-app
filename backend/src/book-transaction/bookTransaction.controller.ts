@@ -11,6 +11,8 @@ import {
 } from '@nestjs/common';
 import { BookTransactionService } from './bookTransaction.service';
 import { CreateBookTransactionDto } from './dto/create-book-transaction.dto';
+import { Roles } from 'src/common/decorators/roles.decorator';
+import { Role } from 'src/common/types/user-types.enum';
 
 @Controller('book-transactions')
 export class BookTransactionController {
@@ -18,16 +20,18 @@ export class BookTransactionController {
     private readonly bookTransactionService: BookTransactionService,
   ) {}
 
+  @Roles(Role.Admin)
   @Get()
   async getAllTransactions() {
     return this.bookTransactionService.findAll();
   }
-
+  @Roles(Role.Admin)
   @Get(':id')
   async getTransactionById(@Param('id') id: string) {
     return this.bookTransactionService.findById(id);
   }
 
+  @Roles(Role.Admin, Role.User)
   @Post()
   async createTransaction(@Body() createDto: CreateBookTransactionDto) {
     return this.bookTransactionService.create(createDto);
@@ -44,6 +48,7 @@ export class BookTransactionController {
   //   );
   // }
 
+  @Roles(Role.Admin)
   @Delete(':id')
   async deleteTransaction(@Param('id') id: string) {
     return this.bookTransactionService.delete(id);
