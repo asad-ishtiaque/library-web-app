@@ -1,6 +1,7 @@
 import { useGetAllBooksQuery } from "../../store/api/Books";
 import Spinner from "../../components/Spinner";
 import Navbar from "../../components/Navbar";
+import Hero from "../../components/Hero";
 
 function Home() {
   const { data: books, error, isLoading } = useGetAllBooksQuery(null);
@@ -16,7 +17,8 @@ function Home() {
   return (
     <div>
       <Navbar />
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 m-3">
+      <Hero/>
+      {/* <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 m-3">
         {books?.map((book) => (
           <div
             key={book.title}
@@ -41,7 +43,7 @@ function Home() {
               <p className="mb-3 text-sm text-gray-600">{book.description}</p>
               <a
                 href="#"
-                className="inline-flex items-center px-3 py-1 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300"
+                className="inline-flex items-center px-3 py-1 text-sm font-medium text-white bg-orange-500 rounded-lg hover:bg-orange-600 focus:ring-4 focus:outline-none"
               >
                 Request to Loan
                 <svg
@@ -63,7 +65,7 @@ function Home() {
             </div>
           </div>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 }

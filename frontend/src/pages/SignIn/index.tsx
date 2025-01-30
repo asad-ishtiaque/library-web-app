@@ -48,53 +48,76 @@ function Signin() {
   };
 
   return (
-    <div>
-      <section className="bg-gray-50">
-        <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-          <a
-            href="#"
-            className="flex items-center mb-6 text-2xl font-semibold text-gray-900"
+    <div className="flex h-screen w-screen flex-wrap items-center text-slate-800">
+      <div className="flex w-full flex-col md:w-1/2">
+        <div className="my-auto  mx-auto flex flex-col justify-center px-6 pt-8 md:justify-start lg:w-[28rem]">
+          <p className="text-center text-3xl font-bold md:leading-tight md:text-left md:text-5xl">
+            Welcome back <br />
+            to <span className="text-orange-400">Book Library </span>
+          </p>
+          <p className="mt-6 text-center font-medium md:text-left">
+            Sign in to your account below.
+          </p>
+          <form
+            className="flex flex-col items-stretch pt-3 md:pt-8"
+            onSubmit={handleSubmit(onSubmit)}
           >
-            BOOK LIBRARY APP
-          </a>
-          <div className="w-full border-gray-900 md:mt-0 sm:max-w-md xl:p-0">
-            <div className="p-10 rounded-3xl border border-gray-200 shadow-2xl space-y-4 md:space-y-6 sm:p-8">
-              <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
-                LOG IN
-              </h1>
-
-              <form
-                className="space-y-4 md:space-y-6"
-                onSubmit={handleSubmit(onSubmit)}
-              >
-                {/* Email Field */}
+            {/* Email Field */}
+            <div className="flex flex-col pt-4">
+              <div className="relative flex overflow-hidden rounded-md  transition focus-within:border-orange-600">
                 <Input
-                  id={"email"}
-                  error={errors.email}
-                  label={"Your Email"}
+                  id="login-email"
+                  error={errors.email?.message}
+                  label="Your Email"
                   placeholder="Email"
                   type="email"
                   {...register("email")}
                 />
-
-                {/* Password Field */}
-
+              </div>
+            </div>
+            {/* Password Field */}
+            <div className="mb-4 flex flex-col pt-4">
+              <div className="relative flex overflow-hidden rounded-md  transition focus-within:border-orange-600">
                 <Input
-                  id={"password"}
-                  error={errors.password}
-                  label={"Password"}
+                  id="login-password"
+                  error={errors.password?.message}
+                  label="Password"
                   placeholder="Password"
                   type="password"
                   {...register("password")}
                 />
-
-                {/* Submit Button */}
-                <Button text={"Sign in"} />
-              </form>
+              </div>
             </div>
+            <a
+              href="#"
+              className="mb-6 text-center text-sm font-medium text-gray-600 md:text-left"
+            >
+              Forgot password?
+            </a>
+            {/* Submit Button */}
+            <Button text="Sign in" />
+          </form>
+          <div className="py-6 text-center">
+            <p className="text-gray-600">
+              Don't have an account?
+              <a
+                className="whitespace-nowrap ml-1 font-semibold text-orange-400 underline underline-offset-4 cursor-pointer"
+                onClick={() => {
+                  navigate(RouteNames.Signup.route);
+                }}
+              >
+                Sign up
+              </a>
+            </p>
           </div>
         </div>
-      </section>
+      </div>
+      <div className="flex items-center">
+        <img
+          className="ml-8 w-11/12 max-w-lg rounded-lg object-cover"
+          src="/src/assets/book-stacks-vector.png"
+        />
+      </div>
     </div>
   );
 }

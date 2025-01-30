@@ -2,7 +2,7 @@ import React from "react";
 
 const Input = React.forwardRef(({ error, id, label, ...rest }: any, ref) => {
   return (
-    <div>
+    <div className="w-full">
       <label
         htmlFor={id}
         className="block mb-2 text-sm font-medium text-gray-900 text-left"
